@@ -8,6 +8,8 @@ from dash.dependencies import Input,Output
 import datetime
 from datetime import date,datetime
 # from jupyter_dash import JupyterDash
+
+#---refreshing from NSE.com
 #---extract data from NSE Option Chain---
 def option_chain(symbol='NIFTY'):
     symbol = symbol
