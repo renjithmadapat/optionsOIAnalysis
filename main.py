@@ -55,7 +55,7 @@ def select_exp_date():
 
 #---get the In the Money strike price based on the spot price---
 def get_itm(spot, diff = 50):
-    l_strike = spot - (spot%diff)
+    l_strike = spot - (spot % diff)
     u_strike = l_strike+diff
     if spot - l_strike < u_strike - spot: itm_value = l_strike
     elif spot - l_strike > u_strike - spot: itm_value = u_strike
