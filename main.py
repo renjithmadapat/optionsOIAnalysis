@@ -158,7 +158,7 @@ app.layout = html.Div([
         html.Div(id='refresh-data')
     ]),
 
-    html.Div([
+    html.Div
         html.H3('Select Date'),
         dcc.Dropdown(exp_drop_list, id='expiry-date', value=default_value)
     ]),
