@@ -121,7 +121,7 @@ def chart_data(data_frame,expiry):
     spot_price = data_df[data_df['underlyingValue']>0]['underlyingValue'].iloc[0]
     refresh_time = data_df['timeXvalue'].iloc[0]
     refresh_test = datetime.strptime(data_df['timestamp'].iloc[0], "%Y-%m-%d %H:%M:%S.%f")
-    refresh_date = refresh_test.strftime('%d-%b-%Y time:%H:%S')
+    refresh_date = refresh_test.strftime('%d-%b-%Y time:%H:%M')
     itm_strike = get_itm(spot_price)
     chart_range = 1500
     lower_range = itm_strike - chart_range
@@ -136,6 +136,7 @@ def chart_data(data_frame,expiry):
     return chart_df, spot_price, refresh_time,itm_strike,refresh_date
 
 app = dash.Dash(__name__)
+server = app.server
 
 #---sort the filter dropdown values----
 data_df = get_option_data()
@@ -150,7 +151,7 @@ default_value = exp_drop_list[0]['label']
 ##### <---------------- App Layout--------------------------------->
 
 app.layout = html.Div([
-    html.H1('Dashboard'),
+    html.H1('OI Analytics Dashboard'),
 
     html.Div([
         html.Button('Refresh', id='btn-data_refresh', n_clicks=0),
