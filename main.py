@@ -55,12 +55,12 @@ def select_exp_date():
     else: return selection_list[0]
 
 #---get the In the Money strike price based on the spot price---
-def get_itm(spot,diff = 50):
+def get_itm(spot, diff = 50):
     l_strike = spot - (spot%diff)
     u_strike = l_strike+diff
     if spot - l_strike < u_strike - spot: itm_value = l_strike
     elif spot - l_strike > u_strike - spot: itm_value = u_strike
-    else: itm_value = l_price
+    else: itm_value = l_strike
     return itm_value
 
 #----download data from NSE Option Chain and convert to usable dataframe and download as csv---
@@ -158,7 +158,7 @@ app.layout = html.Div([
         html.Div(id='refresh-data')
     ]),
 
-    html.Div
+    html.Div([
         html.H3('Select Date'),
         dcc.Dropdown(exp_drop_list, id='expiry-date', value=default_value)
     ]),
